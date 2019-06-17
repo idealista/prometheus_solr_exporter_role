@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: prometheus_solr_exporter
+    hostname: prometheus_solr_exporter
+    image: idealista/jdk:8u212-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - prometheus_solr_exporter
+    command: '/lib/systemd/systemd'
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: goss
+  enabled: true
+  lint:
+    name: yamllint

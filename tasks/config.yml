@@ -1,0 +1,10 @@
+---
+- name: Solr_prometheus | Setting configuration up
+  copy:
+    src: "{{ prometheus_solr_exporter_config_file }}"
+    dest: "{{ prometheus_solr_exporter_config_location }}"
+    owner: "{{ prometheus_solr_exporter_user }}"
+    group: "{{ prometheus_solr_exporter_group }}"
+    mode: '0660'
+  when: prometheus_solr_exporter_config_file
+  notify: Solr_prometheus | Restart service

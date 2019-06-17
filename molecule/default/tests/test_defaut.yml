@@ -1,0 +1,15 @@
+---
+user:
+  {{ prometheus_solr_exporter_user }}:
+    exists: true
+    groups:
+      - {{ prometheus_solr_exporter_group }}
+
+service:
+  prometheus_solr_exporter:
+    enabled: true
+    running: true
+
+port:
+  tcp:{{ prometheus_solr_exporter_port }}:
+    listening: true

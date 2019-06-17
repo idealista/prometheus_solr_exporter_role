@@ -1,0 +1,59 @@
+---
+- name: Solr_prometheus | Installing OS packages
+  apt:
+    name: "{{ prometheus_solr_exporter_os_packages }}"
+    state: present
+
+- name: Solr_prometheus | Checking group
+  group:
+    name: "{{ prometheus_solr_exporter_group }}"
+    state: present
+
+- name: Solr_prometheus | Checking user
+  user:
+    create_home: False
+    group: "{{ prometheus_solr_exporter_group }}"
+    name: "{{ prometheus_solr_exporter_user }}"
+    state: present
+
+- name: Solr_prometheus | Checking directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ prometheus_solr_exporter_user }}"
+    group: "{{ prometheus_solr_exporter_group }}"
+  loop:
+    - "{{ prometheus_solr_exporter_temp_dir }}"
+    - "{{ prometheus_solr_exporter_installation_dir }}"
+
+- name: Solr_prometheus | Checking files
+  stat:
+    path: "{{ prometheus_solr_exporter_temp_dir }}/{{ prometheus_solr_exporter_package }}"
+  register: prometheus_solr_exporter_tar_file
+
+- name: Solr_prometheus | Downloading installation package
+  get_url:
+    dest: "{{ prometheus_solr_exporter_temp_dir }}"
+    url: "{{ prometheus_solr_exporter_download_url }}"
+    force: no
+    owner: "{{ prometheus_solr_exporter_user }}"
+    group: "{{ prometheus_solr_exporter_group }}"
+  until: prometheus_solr_exporter_downloaded_file.status_code == 200
+  retries: 5
+  delay: 5
+  register: prometheus_solr_exporter_downloaded_file
+  when: not prometheus_solr_exporter_tar_file.stat.exists
+
+- name: Solr_prometheus | Extracting installation package
+  unarchive:
+    src: "{{ prometheus_solr_exporter_temp_dir }}/{{ prometheus_solr_exporter_package }}"
+    dest: "{{ prometheus_solr_exporter_installation_dir }}/"
+    remote_src: yes
+    extra_opts:
+      - "{{ item }}"
+      - --strip-components=1
+  loop:
+    - "solr-{{ prometheus_solr_exporter_version }}/contrib/prometheus-exporter"
+    - "solr-{{ prometheus_solr_exporter_version }}/dist"
+    - "solr-{{ prometheus_solr_exporter_version }}/server/resources"
+    - "solr-{{ prometheus_solr_exporter_version }}/server/solr-webapp/webapp/WEB-INF/lib"

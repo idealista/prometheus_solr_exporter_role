@@ -1,0 +1,23 @@
+[Unit]
+Description=Solr prometheus exporter daemon
+After=network.target
+
+[Service]
+User={{ prometheus_solr_exporter_user }}
+Group={{ prometheus_solr_exporter_group }}
+Type=simple
+ExecStart={{ prometheus_solr_exporter_installation_dir }}/contrib/prometheus-exporter/bin/solr-exporter \
+            --port {{ prometheus_solr_exporter_port }} \
+            {% if prometheus_solr_exporter_standalone_mode %}
+            --baseurl {{ prometheus_solr_exporter_solr_baseurl }} \
+            {% else %}
+            --zkhost {{ prometheus_solr_exporter_zookeeper_host }} \
+            {% endif %} \
+            --config-file {{ prometheus_solr_exporter_installation_dir }}/contrib/prometheus-exporter/conf/solr-exporter-config.xml \
+            --num-threads {{ prometheus_solr_exporter_threads }}
+Restart=on-failure
+RestartSec=5s
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
