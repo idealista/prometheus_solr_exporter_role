@@ -1,0 +1,2 @@
+---
+solr_zookeeper_hosts: zookeeper:2181

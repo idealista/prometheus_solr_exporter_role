@@ -1,0 +1,8 @@
+---
+- src: https://github.com/idealista/zookeeper_role.git
+  version: 1.5.0
+  name: zookeeper_role
+
+- src: https://github.com/idealista/solrcloud-role.git
+  version: 2.2.0
+  name: solrcloud_role

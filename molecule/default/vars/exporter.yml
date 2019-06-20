@@ -1,0 +1,5 @@
+---
+prometheus_solr_exporter_solr_mode: cloud
+prometheus_solr_exporter_zookeeper_host: "{{ hostvars['zookeeper']['ansible_facts']['default_ipv4']['address'] }}:2181/solr"
+
+prometheus_solr_exporter_solr_baseurl: http://solrcloud1:8393/solr

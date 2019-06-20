@@ -8,7 +8,7 @@ Group={{ prometheus_solr_exporter_group }}
 Type=simple
 ExecStart={{ prometheus_solr_exporter_installation_dir }}/contrib/prometheus-exporter/bin/solr-exporter \
             --port {{ prometheus_solr_exporter_port }} \
-            {% if prometheus_solr_exporter_standalone_mode %}
+            {% if prometheus_solr_exporter_solr_mode == 'standalone' %}
             --baseurl {{ prometheus_solr_exporter_solr_baseurl }} \
             {% else %}
             --zkhost {{ prometheus_solr_exporter_zookeeper_host }} \

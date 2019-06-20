@@ -1,11 +1,69 @@
 ---
 dependency:
   name: galaxy
+
 driver:
   name: docker
+
 lint:
   name: yamllint
+
 platforms:
+  - name: zookeeper
+    hostname: zookeeper
+    image: idealista/zookeeper:latest
+    privileged: true
+    config:
+      limits.cpu: 2
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - solr
+      - zookeeper
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: solr
+
+  - name: solrcloud1
+    hostname: solrcloud1
+    image: idealista/jdk:8u181-stretch-openjdk-headless
+    privileged: true
+    config:
+      limits.cpu: 2
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - solr
+      - solrcloud
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: solr
+    exposed_ports:
+      - "8983"
+
+  - name: solrcloud2
+    hostname: solrcloud2
+    image: idealista/jdk:8u181-stretch-openjdk-headless
+    privileged: true
+    config:
+      limits.cpu: 2
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - solr
+      - solrcloud
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: solr
+    exposed_ports:
+      - "8983"
+
   - name: prometheus_solr_exporter
     hostname: prometheus_solr_exporter
     image: idealista/jdk:8u212-stretch-openjdk-headless
@@ -15,12 +73,20 @@ platforms:
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
     groups:
-      - prometheus_solr_exporter
+      - solr
     command: '/lib/systemd/systemd'
+    networks:
+      - name: solr
+
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      fact_caching: jsonfile
+      fact_caching_connection: facts
   lint:
     name: ansible-lint
+
 verifier:
   name: goss
   enabled: true

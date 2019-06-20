@@ -61,7 +61,7 @@ Variables explanation:
 - `prometheus_solr_exporter_group` group owner of all files
 - `prometheus_solr_exporter_temp_dir` the path for a temporary directory
 - `prometheus_solr_exporter_port` listening port
-- `prometheus_solr_exporter_standalone_mode` boolean
+- `prometheus_solr_exporter_solr_mode` 'standalone' or 'cluster'
 - `prometheus_solr_exporter_threads` number of threads
 - `prometheus_solr_exporter_config_file` this is the config file path. Use it to override default config file
 
