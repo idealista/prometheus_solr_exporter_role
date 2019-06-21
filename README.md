@@ -21,7 +21,8 @@ This role installs a Prometheus exporter for Solr
 
 ## Getting started
 
-Install Prometheus exporter for Solr standalone or cluster
+This role installs a Prometheus exporter for Solr Standalone or Solr Cloud. 
+If you need to install Apache Solr use this other role [idealista/solrcloud-role](https://github.com/idealista/solrcloud-role)  
 
 ### Prerequesites
 
