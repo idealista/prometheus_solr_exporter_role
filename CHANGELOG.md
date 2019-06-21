@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 [Full Changelog](https://github.com/idealista/prometheus_solr_exporter_role/compare/1.0.1...1.0.0)
 ### Added
 - *Improve molecule tests* @miguel-chacon
+### Changed
+- *`prometheus_solr_exporter_standalone_mode` replaced by `prometheus_solr_exporter_solr_mode`* @miguel-chacon 
 ### Fixed
 - *[#1](https://github.com/idealista/prometheus_solr_exporter_role/issues/1) Add cross roles reference* @miguel-chacon
 
