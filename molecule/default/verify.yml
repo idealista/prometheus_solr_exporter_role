@@ -1,6 +1,6 @@
 ---
 - name: Verify
-  hosts: all
+  hosts: prometheus_solr_exporter
   vars:
     goss_version: v0.3.7
     goss_arch: amd64

@@ -13,3 +13,9 @@ service:
 port:
   tcp:{{ prometheus_solr_exporter_port }}:
     listening: true
+
+http:
+  http://localhost:{{ prometheus_solr_exporter_port }}:
+    status: 200
+    body: ["solr_collections_live_nodes"]
+
