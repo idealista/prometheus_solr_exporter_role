@@ -1,13 +1,20 @@
 ---
 language: python
-python: "3.6"
+python: "3.9"
 
 services:
   - docker
 install:
-  - pip install -r requirements-test.txt
+  - pip install pipenv
+  - pipenv sync
 script:
   - molecule test
+env:
+  jobs:
+    - DOCKER_IMAGE_BASE=idealista/jdk:8u265-stretch-openjdk-headless
+    - DOCKER_IMAGE_BASE=idealista/jdk:8u265-buster-adoptopenjdk-headless
+script:
+  - pipenv run molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
