@@ -1,6 +1,6 @@
 ![Logo](https://github.com/idealista/prometheus_solr_exporter_role/blob/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/prometheus_solr_exporter_role.png)](https://travis-ci.org/idealista/prometheus_solr_exporter_role)
+[![Build Status](https://travis-ci.com/idealista/prometheus_solr_exporter_role.png)](https://travis-ci.com/idealista/prometheus_solr_exporter_role)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-idealista.prometheus_solr_exporter__role-B62682.svg)](https://galaxy.ansible.com/idealista/prometheus_solr_exporter_role)
 
 Solr Prometheus exporter Ansible role

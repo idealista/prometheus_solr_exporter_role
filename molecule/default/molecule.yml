@@ -5,13 +5,15 @@ dependency:
 driver:
   name: docker
 
-lint:
-  name: yamllint
+lint: |
+  yamllint .
+  ansible-lint .
 
 platforms:
   - name: zookeeper
     hostname: zookeeper
     image: idealista/zookeeper:latest
+    pre_build_image: true
     privileged: true
     config:
       limits.cpu: 2
@@ -19,64 +21,84 @@ platforms:
       - SYS_ADMIN
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    tmpfs:
+      - '/run'
+      - '/run/lock'
+    exposed_ports:
+      - 2181/tcp
     groups:
       - solr
       - zookeeper
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
     networks:
       - name: solr
 
   - name: solrcloud1
     hostname: solrcloud1
-    image: idealista/jdk:8u181-stretch-openjdk-headless
-    privileged: true
+    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u265-stretch-openjdk-headless}
+    privileged: false
     config:
       limits.cpu: 2
     capabilities:
       - SYS_ADMIN
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    tmpfs:
+      - '/run'
+      - '/run/lock'
     groups:
       - solr
       - solrcloud
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
     networks:
       - name: solr
     exposed_ports:
-      - "8983"
+      - 8983/tcp
 
   - name: solrcloud2
     hostname: solrcloud2
-    image: idealista/jdk:8u181-stretch-openjdk-headless
-    privileged: true
+    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u265-stretch-openjdk-headless}
+    privileged: false
     config:
       limits.cpu: 2
     capabilities:
       - SYS_ADMIN
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    tmpfs:
+      - '/run'
+      - '/run/lock'
     groups:
       - solr
       - solrcloud
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
     networks:
       - name: solr
     exposed_ports:
-      - "8983"
+      - 8983/tcp
 
   - name: prometheus_solr_exporter
     hostname: prometheus_solr_exporter
-    image: idealista/jdk:8u212-stretch-openjdk-headless
-    privileged: true
+    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u265-stretch-openjdk-headless}
+    privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    tmpfs:
+      - '/run'
+      - '/run/lock'
     groups:
       - solr
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
     networks:
       - name: solr
+    exposed_ports:
+      - 9854/tcp
 
 provisioner:
   name: ansible
@@ -84,11 +106,7 @@ provisioner:
     defaults:
       fact_caching: jsonfile
       fact_caching_connection: facts
-  lint:
-    name: ansible-lint
 
 verifier:
-  name: goss
-  enabled: true
-  lint:
-    name: yamllint
+  name: ansible
+  directory: ./tests

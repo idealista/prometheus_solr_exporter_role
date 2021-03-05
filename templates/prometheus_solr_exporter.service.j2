@@ -17,7 +17,8 @@ ExecStart={{ prometheus_solr_exporter_installation_dir }}/contrib/prometheus-exp
             --num-threads {{ prometheus_solr_exporter_threads }}
 Restart=on-failure
 RestartSec=5s
-PrivateTmp=true
+PrivateTmp={{ prometheus_solr_exporter_private_tmp }}
+
 
 [Install]
 WantedBy=multi-user.target

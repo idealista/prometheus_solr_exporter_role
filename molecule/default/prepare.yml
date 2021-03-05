@@ -1,14 +1,4 @@
 ---
-- name: Prepare Zookeeper
-  gather_facts: yes
-  hosts: zookeeper
-  pre_tasks:
-    - name: Overriding vars
-      include_vars:
-        file: vars/zookeeper.yml
-  roles:
-    - role: zookeeper_role
-
 - name: Prepare Solr Cloud
   gather_facts: yes
   hosts: solrcloud
