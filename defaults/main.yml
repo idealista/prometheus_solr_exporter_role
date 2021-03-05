@@ -1,5 +1,5 @@
 ---
-prometheus_solr_exporter_version: 8.1.1
+prometheus_solr_exporter_version: 8.8.1
 prometheus_solr_exporter_installation_dir: /opt/prometheus_solr_exporter
 
 prometheus_solr_exporter_user: solr
@@ -14,3 +14,4 @@ prometheus_solr_exporter_zookeeper_host: localhost:2181/solr
 prometheus_solr_exporter_solr_baseurl: http://localhost:8983/solr
 prometheus_solr_exporter_threads: 1
 prometheus_solr_exporter_config_file: ''
+prometheus_solr_exporter_private_tmp: true
