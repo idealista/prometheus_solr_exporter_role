@@ -36,7 +36,7 @@ platforms:
 
   - name: solrcloud1
     hostname: solrcloud1
-    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u265-stretch-openjdk-headless}
+    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u302-stretch-openjdk-headless}
     privileged: false
     config:
       limits.cpu: 2
@@ -59,7 +59,7 @@ platforms:
 
   - name: solrcloud2
     hostname: solrcloud2
-    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u265-stretch-openjdk-headless}
+    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u302-stretch-openjdk-headless}
     privileged: false
     config:
       limits.cpu: 2
@@ -82,7 +82,7 @@ platforms:
 
   - name: prometheus_solr_exporter
     hostname: prometheus_solr_exporter
-    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u265-stretch-openjdk-headless}
+    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u302-stretch-openjdk-headless}
     privileged: false
     capabilities:
       - SYS_ADMIN
