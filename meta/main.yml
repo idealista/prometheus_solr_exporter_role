@@ -1,5 +1,7 @@
 ---
 galaxy_info:
+  role-name: prometheus_solr_exporter_role
+  namespace: idealista
   author: Idealista
   description: Install solr prometheus exporter
   company: Idealista S.A.U
