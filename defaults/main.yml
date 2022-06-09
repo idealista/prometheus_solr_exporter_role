@@ -15,3 +15,14 @@ prometheus_solr_exporter_solr_baseurl: http://localhost:8983/solr
 prometheus_solr_exporter_threads: 1
 prometheus_solr_exporter_config_file: ''
 prometheus_solr_exporter_private_tmp: true
+
+# usually stable installation vars
+prometheus_solr_exporter_package: "solr-{{ prometheus_solr_exporter_version }}.tgz"
+prometheus_solr_exporter_download_url: "http://archive.apache.org/dist/lucene/solr/{{ prometheus_solr_exporter_version }}/{{ prometheus_solr_exporter_package }}"
+prometheus_solr_exporter_config_location: "{{ prometheus_solr_exporter_installation_dir }}/contrib/prometheus-exporter/conf/solr-exporter-config.xml"
+
+prometheus_solr_exporter_os_packages:
+  - unzip
+  - tar
+_solr_exporter_command_version_check: "grep 'Apache Solr {{ prometheus_solr_exporter_version }}' {{ prometheus_solr_exporter_installation_dir }}/docs/index.html"
+solr_exporter_force_reinstall: false

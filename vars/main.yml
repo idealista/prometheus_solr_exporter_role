@@ -1,8 +1,0 @@
----
-prometheus_solr_exporter_package: "solr-{{ prometheus_solr_exporter_version }}.tgz"
-prometheus_solr_exporter_download_url: "http://archive.apache.org/dist/lucene/solr/{{ prometheus_solr_exporter_version }}/{{ prometheus_solr_exporter_package }}"
-prometheus_solr_exporter_config_location: "{{ prometheus_solr_exporter_installation_dir }}/contrib/prometheus-exporter/conf/solr-exporter-config.xml"
-
-prometheus_solr_exporter_os_packages:
-  - unzip
-  - tar
