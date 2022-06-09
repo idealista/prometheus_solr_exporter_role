@@ -1,5 +1,5 @@
 ---
-- name: Solr_prometheus | Copying service definition
+- name: SOLR_EXPORTER | Copying service definition
   template:
     src: prometheus_solr_exporter.service.j2
     dest: /etc/systemd/system/prometheus_solr_exporter.service
@@ -7,7 +7,7 @@
     group: root
     mode: 0644
 
-- name: Solr_prometheus | Enabling service daemon
+- name: SOLR_EXPORTER | Enabling service daemon
   systemd:
     name: prometheus_solr_exporter
     state: started
