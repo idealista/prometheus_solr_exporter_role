@@ -1,5 +1,5 @@
 ---
-- name: Solr_prometheus | Restart service
+- name: restart solr_exporter
   service:
-    name: solr_prometheus_exporter
+    name: prometheus_solr_exporter
     state: restarted

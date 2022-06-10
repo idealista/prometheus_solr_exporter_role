@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/prometheus_solr_exporter_role/tree/develop)
 ### Fixed
 - *[#13](https://github.com/idealista/prometheus_solr_exporter_role/issues/13) Fix exporter reinstall issued* @frantsao
+- *[#13](https://github.com/idealista/prometheus_solr_exporter_role/issues/13) Replace installation dir by a link to the real installation dir (BREAKING)* @frantsao
+- *[#13](https://github.com/idealista/prometheus_solr_exporter_role/issues/13) Fix service handler* @frantsao
 
 ## [1.1.1](https://github.com/idealista/prometheus_solr_exporter_role/tree/1.1.1)
 [Full Changelog](https://github.com/idealista/prometheus_solr_exporter_role/compare/1.1.0...1.1.1)

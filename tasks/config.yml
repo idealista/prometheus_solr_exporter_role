@@ -7,4 +7,4 @@
     group: "{{ prometheus_solr_exporter_group }}"
     mode: '0660'
   when: prometheus_solr_exporter_config_file
-  notify: SOLR_EXPORTER | Restart service
+  notify: restart solr_exporter
