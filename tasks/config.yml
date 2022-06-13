@@ -1,5 +1,5 @@
 ---
-- name: Solr_prometheus | Setting configuration up
+- name: SOLR_EXPORTER | Setting configuration up
   copy:
     src: "{{ prometheus_solr_exporter_config_file }}"
     dest: "{{ prometheus_solr_exporter_config_location }}"
@@ -7,4 +7,4 @@
     group: "{{ prometheus_solr_exporter_group }}"
     mode: '0660'
   when: prometheus_solr_exporter_config_file
-  notify: Solr_prometheus | Restart service
+  notify: restart solr_exporter
