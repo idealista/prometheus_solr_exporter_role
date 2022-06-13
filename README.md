@@ -34,7 +34,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ``` yml
 - src: idealista.prometheus_solr_exporter_role
-  version: 1.0.0
+  version: 2.0.0
   name: prometheus_solr_exporter
 ```
 
@@ -83,7 +83,7 @@ Launch tests:
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.8.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-5.2.0-green.svg)
 
 ## Versioning
 
