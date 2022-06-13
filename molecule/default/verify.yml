@@ -13,6 +13,7 @@
 
   vars_files:
     - ../../defaults/main.yml
+    - ../../vars/main.yml
 
   tasks:
     - name: Download and install goss

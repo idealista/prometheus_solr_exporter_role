@@ -1,16 +1,16 @@
 ---
-- name: SOLR_EXPORTER | Installing OS packages
+- name: Solr_prometheus | Installing OS packages
   apt:
     name: "{{ prometheus_solr_exporter_os_packages }}"
     state: present
 
-- name: SOLR_EXPORTER | Checking group
+- name: Solr_prometheus | Checking group
   group:
     name: "{{ prometheus_solr_exporter_group }}"
     system: true
     state: present
 
-- name: SOLR_EXPORTER | Checking user
+- name: Solr_prometheus | Checking user
   user:
     create_home: False
     group: "{{ prometheus_solr_exporter_group }}"
@@ -18,7 +18,7 @@
     system: true
     state: present
 
-- name: SOLR_EXPORTER | Checking directories
+- name: Solr_prometheus | Checking directories
   file:
     path: "{{ item }}"
     state: directory
@@ -26,28 +26,14 @@
     group: "{{ prometheus_solr_exporter_group }}"
   loop:
     - "{{ prometheus_solr_exporter_temp_dir }}"
-    - "{{ prometheus_solr_exporter_real_installation_dir }}"
+    - "{{ prometheus_solr_exporter_installation_dir }}"
 
-- name: SOLR_EXPORTER | Check solr_exporter version
-  command: "{{ _solr_exporter_command_version_check }}"
-  register: solr_exporter_check
-  changed_when: false
-  ignore_errors: true
-
-- name: SOLR_EXPORTER | Create link to installation dir
-  file:
-    path: "{{ prometheus_solr_exporter_installation_dir }}"
-    src: "{{ prometheus_solr_exporter_real_installation_dir }}"
-    state: link
-  when: solr_exporter_force_reinstall or solr_exporter_check is failed or 'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout
-  notify: restart solr_exporter
-
-- name: SOLR_EXPORTER | Checking files
+- name: Solr_prometheus | Checking files
   stat:
     path: "{{ prometheus_solr_exporter_temp_dir }}/{{ prometheus_solr_exporter_package }}"
   register: prometheus_solr_exporter_tar_file
 
-- name: SOLR_EXPORTER | Downloading installation package
+- name: Solr_prometheus | Downloading installation package
   get_url:
     dest: "{{ prometheus_solr_exporter_temp_dir }}"
     url: "{{ prometheus_solr_exporter_download_url }}"
@@ -58,9 +44,9 @@
   retries: 5
   delay: 5
   register: prometheus_solr_exporter_downloaded_file
-  when: solr_exporter_force_reinstall or solr_exporter_check is failed or 'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout and not prometheus_solr_exporter_tar_file.stat.exists
+  when: not prometheus_solr_exporter_tar_file.stat.exists
 
-- name: SOLR_EXPORTER | Extracting installation package
+- name: Solr_prometheus | Extracting installation package
   unarchive:
     src: "{{ prometheus_solr_exporter_temp_dir }}/{{ prometheus_solr_exporter_package }}"
     dest: "{{ prometheus_solr_exporter_installation_dir }}/"
@@ -73,5 +59,3 @@
     - "solr-{{ prometheus_solr_exporter_version }}/dist"
     - "solr-{{ prometheus_solr_exporter_version }}/server/resources"
     - "solr-{{ prometheus_solr_exporter_version }}/server/solr-webapp/webapp/WEB-INF/lib"
-    - "solr-{{ prometheus_solr_exporter_version }}/docs"
-  when: solr_exporter_force_reinstall or solr_exporter_check is failed or 'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout

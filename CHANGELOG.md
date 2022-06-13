@@ -13,12 +13,13 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [1.1.1](https://github.com/idealista/prometheus_solr_exporter_role/tree/1.1.1)
 [Full Changelog](https://github.com/idealista/prometheus_solr_exporter_role/compare/1.1.0...1.1.1)
 ### Changed
-- *[#10](https://github.com/idealista/prometheus_solr_exporter_role/issues/10) Update to version 8.11.0 and patch log4j vulnerability* @aren-pulid0
+- *[#10](https://github.com/idealista/prometheus_solr_exporter_role/issues/3) Update to version 8.11.0 and patch log4j vulnerability* @aren-pulid0
 
 ## [1.1.0](https://github.com/idealista/prometheus_solr_exporter_role/tree/1.1.0)
 [Full Changelog](https://github.com/idealista/prometheus_solr_exporter_role/compare/1.1.0...1.0.1)
 ### Changed
 - *[#3](https://github.com/idealista/prometheus_solr_exporter_role/issues/3) Debian 10 support* @sorobon
+
 
 ## [1.0.1](https://github.com/idealista/prometheus_solr_exporter_role/tree/1.0.1)
 [Full Changelog](https://github.com/idealista/prometheus_solr_exporter_role/compare/1.0.1...1.0.0)
