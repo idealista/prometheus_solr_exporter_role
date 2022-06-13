@@ -1,15 +1,15 @@
 ---
-- name: SOLR_EXPORTER | Install
+- name: Solr_prometheus | Install
   import_tasks: install.yml
   tags:
     - prometheus_solr_exporter_install
 
-- name: SOLR_EXPORTER | Config
+- name: Solr_prometheus | Config
   import_tasks: config.yml
   tags:
     - prometheus_solr_exporter_config
 
-- name: SOLR_EXPORTER | Service
+- name: Solr_prometheus | Service
   import_tasks: service.yml
   tags:
     - prometheus_solr_exporter_service
