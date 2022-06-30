@@ -19,3 +19,13 @@ http:
     status: 200
     body: ["solr_collections_live_nodes"]
 
+file:
+  {{ prometheus_solr_exporter_config_location }}:
+    exists: true
+    filetype: file
+
+command:
+  grep 'The replaced solr exporter config' {{ prometheus_solr_exporter_config_location }}:
+    exit-status: 0
+    timeout: 10000
+
