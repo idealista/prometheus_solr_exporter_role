@@ -14,7 +14,6 @@ prometheus_solr_exporter_solr_mode: standalone
 prometheus_solr_exporter_zookeeper_host: localhost:2181/solr
 prometheus_solr_exporter_solr_baseurl: http://localhost:8983/solr
 prometheus_solr_exporter_threads: 1
-prometheus_solr_exporter_config_file: ''
 prometheus_solr_exporter_private_tmp: true
 
 # usually stable installation vars
