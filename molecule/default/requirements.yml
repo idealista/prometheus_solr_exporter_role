@@ -1,4 +1,4 @@
 ---
 - src: https://github.com/idealista/solrcloud-role.git
-  version: 2.5.1
+  version: 3.0.3
   name: solrcloud_role
