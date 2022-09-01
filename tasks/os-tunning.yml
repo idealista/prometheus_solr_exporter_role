@@ -1,0 +1,26 @@
+---
+
+- name: TUNNING | Set to {{ prometheus_solr_exporter_nofile_limit }} the nofile limit
+  pam_limits:
+    domain: '*'
+    limit_type: soft
+    limit_item: nofile
+    value: "{{ prometheus_solr_exporter_nofile_limit }}"
+  register: ulimit
+  when: prometheus_solr_exporter_nofile_limit is defined
+
+- name: TUNNING | Set to {{ prometheus_solr_exporter_nproc_limit }} the nproc limit
+  pam_limits:
+    domain: '*'
+    limit_type: soft
+    limit_item: nproc
+    value: "{{ prometheus_solr_exporter_nproc_limit }}"
+  register: ulimit
+  when: prometheus_solr_exporter_nproc_limit is defined
+
+- name: TUNNING | Reboot host if ulimit changed
+  shell: sleep 10 && shutdown -r now
+  async: 1
+  poll: 0
+  ignore_errors: true
+  when: ulimit.changed

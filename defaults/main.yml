@@ -9,6 +9,12 @@ prometheus_solr_exporter_group: solr
 prometheus_solr_exporter_temp_dir: /usr/src/prometheus_solr_exporter
 
 prometheus_solr_exporter_port: 9854
+
+## OS Tunning options
+prometheus_solr_exporter_os_tunning: true
+prometheus_solr_exporter_nofile_limit: 65535
+prometheus_solr_exporter_nproc_limit: 65535
+
 # standalone, cloud
 prometheus_solr_exporter_solr_mode: standalone
 prometheus_solr_exporter_zookeeper_host: localhost:2181/solr
@@ -26,3 +32,5 @@ prometheus_solr_exporter_os_packages:
   - tar
 _solr_exporter_command_version_check: "grep 'Apache Solr {{ prometheus_solr_exporter_version }}' {{ prometheus_solr_exporter_installation_dir }}/docs/index.html"
 solr_exporter_force_reinstall: false
+
+

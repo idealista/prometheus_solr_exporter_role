@@ -1,4 +1,11 @@
 ---
+
+- name: Solr | OS Tunning
+  import_tasks: os-tunning.yml
+  tags:
+    - prometheus_solr_exporter_tunning
+  when: prometheus_solr_exporter_os_tunning
+
 - name: SOLR_EXPORTER | Install
   import_tasks: install.yml
   tags:

@@ -6,3 +6,4 @@ prometheus_solr_exporter_solr_baseurl: http://solrcloud1:8393/solr
 prometheus_solr_exporter_private_tmp: false
 
 prometheus_solr_exporter_config_file: 'templates/solr-exporter-config.xml'
+prometheus_solr_exporter_os_tunning: false
