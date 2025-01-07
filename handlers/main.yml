@@ -1,5 +1,5 @@
 ---
 - name: restart solr_exporter
   service:
-    name: prometheus_solr_exporter
+    name: "{{ prometheus_solr_exporter_service_name }}"
     state: restarted
