@@ -1,14 +1,17 @@
 ---
+dist: focal
 language: python
 python: "3.9"
 
+os: linux
 services:
   - docker
+before_install:
+  - echo '{"default-cgroupns-mode":"host"}' | sudo tee /etc/docker/daemon.json
+  - sudo systemctl restart docker
 install:
   - pip install pipenv
   - pipenv sync
-script:
-  - molecule test
 env:
   jobs:
     - DOCKER_IMAGE_BASE=idealista/jdk:8u302-stretch-openjdk-headless
