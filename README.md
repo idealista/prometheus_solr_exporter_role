@@ -65,6 +65,10 @@ Variables explanation:
 - `prometheus_solr_exporter_solr_mode` 'standalone' or 'cluster'
 - `prometheus_solr_exporter_threads` number of threads
 - `prometheus_solr_exporter_config_file` this is the config file path. Use it to override default config file
+- `prometheus_solr_exporter_service_location` this is a path location to move the service file
+- `prometheus_solr_exporter_service_name` service name
+- `prometheus_solr_exporter_service_file` the service template file.
+
 
 
 Excluding variables:
