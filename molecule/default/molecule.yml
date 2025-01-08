@@ -14,13 +14,13 @@ platforms:
     hostname: zookeeper
     image: idealista/zookeeper:latest
     pre_build_image: true
-    privileged: true
+    privileged: false
     config:
       limits.cpu: 2
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/run'
       - '/run/lock'
