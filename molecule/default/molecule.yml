@@ -43,7 +43,7 @@ platforms:
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/run'
       - '/run/lock'
@@ -66,7 +66,7 @@ platforms:
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/run'
       - '/run/lock'
@@ -87,7 +87,7 @@ platforms:
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/run'
       - '/run/lock'
