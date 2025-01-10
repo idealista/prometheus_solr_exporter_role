@@ -11,7 +11,7 @@ service:
     running: true
 
 port:
-  tcp:{{ prometheus_solr_exporter_port }}:
+  tcp6:{{ prometheus_solr_exporter_port }}:
     listening: true
 
 http:
