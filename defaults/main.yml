@@ -26,3 +26,7 @@ prometheus_solr_exporter_os_packages:
   - tar
 _solr_exporter_command_version_check: "grep 'Apache Solr {{ prometheus_solr_exporter_version }}' {{ prometheus_solr_exporter_installation_dir }}/docs/index.html"
 solr_exporter_force_reinstall: false
+
+prometheus_solr_exporter_service_location: "/etc/systemd/system/prometheus_solr_exporter.service"
+prometheus_solr_exporter_service_name: "prometheus_solr_exporter"
+prometheus_solr_exporter_service_file: prometheus_solr_exporter.service.j2

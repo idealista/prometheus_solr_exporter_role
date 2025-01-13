@@ -1,3 +1,4 @@
 ---
 solr_zookeeper_hosts: zookeeper:2181
 solr_version: 8.11.0
+solr_os_tunning: false
