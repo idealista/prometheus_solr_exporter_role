@@ -1,4 +1,13 @@
 ---
+- name: SOLR_EXPORTER | Copying service environment file
+  template:
+    src: "{{ prometheus_solr_exporter_env_file }}"
+    dest: "{{ prometheus_solr_exporter_env_location }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart solr_exporter
+
 - name: SOLR_EXPORTER | Copying service definition
   template:
     src: "{{ prometheus_solr_exporter_service_file }}"
