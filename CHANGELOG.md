@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [2.1.1](https://github.com/idealista/prometheus_solr_exporter_role/tree/2.1.1)
 ### Added
+- *[#27](https://github.com/idealista/prometheus_solr_exporter_role/issues/24) Add jmx toogle and xmx variables* @santi-eidu
 - *[#24](https://github.com/idealista/prometheus_solr_exporter_role/issues/24) Add service variables* @santi-eidu
 
 ## [2.1.0](https://github.com/idealista/prometheus_solr_exporter_role/tree/2.1.0)
