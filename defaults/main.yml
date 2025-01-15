@@ -30,3 +30,15 @@ solr_exporter_force_reinstall: false
 prometheus_solr_exporter_service_location: "/etc/systemd/system/prometheus_solr_exporter.service"
 prometheus_solr_exporter_service_name: "prometheus_solr_exporter"
 prometheus_solr_exporter_service_file: prometheus_solr_exporter.service.j2
+prometheus_solr_exporter_env_file: prometheus_solr_exporter.j2
+prometheus_solr_exporter_env_location: "/etc/default/prometheus_solr_exporter"
+prometheus_solr_exporter_xmx: "512m"
+prometheus_solr_exporter_xms: "512m"
+prometheus_solr_exporter_jmx_port: 9010
+prometheus_solr_exporter_jmx_enabled: true
+prometheus_solr_exporter_java_opts: "-Dcom.sun.management.jmxremote={{ prometheus_solr_exporter_jmx_enabled }}
+    -Dcom.sun.management.jmxremote.port={{ prometheus_solr_exporter_jmx_port }}
+    -Dcom.sun.management.jmxremote.local.only=false
+    -Dcom.sun.management.jmxremote.authenticate=false
+    -Dcom.sun.management.jmxremote.ssl=false
+    -Dlog4j2.formatMsgNoLookups=true"

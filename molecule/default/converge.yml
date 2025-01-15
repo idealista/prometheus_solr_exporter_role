@@ -1,6 +1,6 @@
 ---
 - name: Converge
-  hosts: prometheus_solr_exporter
+  hosts: prometheussolrexporter
   vars_files:
     - vars/exporter.yml
   roles:
