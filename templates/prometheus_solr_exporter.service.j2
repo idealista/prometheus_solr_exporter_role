@@ -6,7 +6,8 @@ After=network.target
 User={{ prometheus_solr_exporter_user }}
 Group={{ prometheus_solr_exporter_group }}
 Type=simple
-Environment='JAVA_OPTS=-Dlog4j2.formatMsgNoLookups=true'
+Environment='JAVA_OPTS={{ prometheus_solr_exporter_java_opts }}'
+EnvironmentFile={{ prometheus_solr_exporter_env_location }}
 ExecStart={{ prometheus_solr_exporter_installation_dir }}/contrib/prometheus-exporter/bin/solr-exporter \
             --port {{ prometheus_solr_exporter_port }} \
             {% if prometheus_solr_exporter_solr_mode == 'standalone' %}

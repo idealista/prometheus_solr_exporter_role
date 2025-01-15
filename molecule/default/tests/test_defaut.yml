@@ -11,8 +11,12 @@ service:
     running: true
 
 port:
-  tcp:{{ prometheus_solr_exporter_port }}:
+  tcp6:{{ prometheus_solr_exporter_port }}:
     listening: true
+{% if prometheus_solr_exporter_jmx_enabled %}
+  tcp6:{{ prometheus_solr_exporter_jmx_port }}:
+    listening: true
+{% endif %}
 
 http:
   http://localhost:{{ prometheus_solr_exporter_port }}:

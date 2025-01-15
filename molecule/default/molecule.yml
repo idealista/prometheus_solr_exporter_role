@@ -14,13 +14,13 @@ platforms:
     hostname: zookeeper
     image: idealista/zookeeper:latest
     pre_build_image: true
-    privileged: true
+    privileged: false
     config:
       limits.cpu: 2
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/run'
       - '/run/lock'
@@ -36,14 +36,14 @@ platforms:
 
   - name: solrcloud1
     hostname: solrcloud1
-    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u302-stretch-openjdk-headless}
+    image: idealista/jdk:11.0.16-bullseye-openjdk-headless
     privileged: false
     config:
       limits.cpu: 2
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/run'
       - '/run/lock'
@@ -59,14 +59,14 @@ platforms:
 
   - name: solrcloud2
     hostname: solrcloud2
-    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u302-stretch-openjdk-headless}
+    image: idealista/jdk:11.0.16-bullseye-openjdk-headless
     privileged: false
     config:
       limits.cpu: 2
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/run'
       - '/run/lock'
@@ -80,14 +80,14 @@ platforms:
     exposed_ports:
       - 8983/tcp
 
-  - name: prometheus_solr_exporter
-    hostname: prometheus_solr_exporter
-    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u302-stretch-openjdk-headless}
+  - name: prometheussolrexporter
+    hostname: prometheussolrexporter
+    image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u382-bullseye-temurin-jdk}
     privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/run'
       - '/run/lock'

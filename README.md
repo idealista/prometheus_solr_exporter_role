@@ -65,7 +65,16 @@ Variables explanation:
 - `prometheus_solr_exporter_solr_mode` 'standalone' or 'cluster'
 - `prometheus_solr_exporter_threads` number of threads
 - `prometheus_solr_exporter_config_file` this is the config file path. Use it to override default config file
-
+- `prometheus_solr_exporter_service_location` this is a path location to move the service file
+- `prometheus_solr_exporter_service_name` service name
+- `prometheus_solr_exporter_service_file` the service template file.
+- `prometheus_solr_exporter_env_file` java environment template file
+- `prometheus_solr_exporter_env_location` this is a path location to move the java environment file
+- `prometheus_solr_exporter_xmx` java heap max size
+- `prometheus_solr_exporter_xms` java heap initial size
+- `prometheus_solr_exporter_java_opts` jvm extra options
+- `prometheus_solr_exporter_jmx_enabled` jmx enabled or disabled variable
+- `prometheus_solr_exporter_jmx_port` jmx remote port
 
 Excluding variables:
 

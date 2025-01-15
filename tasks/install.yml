@@ -39,7 +39,9 @@
     path: "{{ prometheus_solr_exporter_installation_dir }}"
     src: "{{ prometheus_solr_exporter_real_installation_dir }}"
     state: link
-  when: solr_exporter_force_reinstall or solr_exporter_check is failed or 'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout
+  when: solr_exporter_force_reinstall or
+        solr_exporter_check is failed or
+        'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout
   notify: restart solr_exporter
 
 - name: SOLR_EXPORTER | Checking files
@@ -58,7 +60,10 @@
   retries: 5
   delay: 5
   register: prometheus_solr_exporter_downloaded_file
-  when: solr_exporter_force_reinstall or solr_exporter_check is failed or 'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout and not prometheus_solr_exporter_tar_file.stat.exists
+  when: solr_exporter_force_reinstall or
+        solr_exporter_check is failed or
+        'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout and
+        not prometheus_solr_exporter_tar_file.stat.exists
 
 - name: SOLR_EXPORTER | Extracting installation package
   unarchive:
@@ -74,4 +79,6 @@
     - "solr-{{ prometheus_solr_exporter_version }}/server/resources"
     - "solr-{{ prometheus_solr_exporter_version }}/server/solr-webapp/webapp/WEB-INF/lib"
     - "solr-{{ prometheus_solr_exporter_version }}/docs"
-  when: solr_exporter_force_reinstall or solr_exporter_check is failed or 'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout
+  when: solr_exporter_force_reinstall or
+        solr_exporter_check is failed or
+        'Apache Solr ' + prometheus_solr_exporter_version not in solr_exporter_check.stdout
