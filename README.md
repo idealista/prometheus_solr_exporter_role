@@ -73,6 +73,8 @@ Variables explanation:
 - `prometheus_solr_exporter_xmx` java heap max size
 - `prometheus_solr_exporter_xms` java heap initial size
 - `prometheus_solr_exporter_java_opts` jvm extra options
+- `prometheus_solr_exporter_jmx_enabled` jmx enabled or disabled variable
+- `prometheus_solr_exporter_jmx_port` jmx remote port
 
 Excluding variables:
 
