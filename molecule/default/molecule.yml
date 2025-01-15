@@ -80,8 +80,8 @@ platforms:
     exposed_ports:
       - 8983/tcp
 
-  - name: prometheus_solr_exporter
-    hostname: prometheus_solr_exporter
+  - name: prometheussolrexporter
+    hostname: prometheussolrexporter
     image: ${DOCKER_IMAGE_BASE:-idealista/jdk:8u382-bullseye-temurin-jdk}
     privileged: false
     capabilities:
